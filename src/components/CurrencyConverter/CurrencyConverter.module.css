@@ -1,0 +1,221 @@
+.converterCard {
+  background-color: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.cardHeader {
+  margin-bottom: var(--spacing-md);
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-ink);
+  letter-spacing: -0.3px;
+}
+
+.cardDescription {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr auto 1.3fr;
+  align-items: flex-end;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.inputWrapper, .selectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input, .select {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.input:focus, .select:focus {
+  border-color: var(--color-forest);
+  background-color: #ffffff;
+}
+
+.hasError .input {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.errorText {
+  font-size: 12px;
+  color: var(--color-error);
+  font-weight: 500;
+}
+
+.swapWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+}
+
+.swapButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  color: var(--color-forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.swapButton:hover {
+  background-color: var(--color-forest);
+  color: #ffffff;
+  border-color: var(--color-forest);
+  transform: rotate(180deg);
+}
+
+.noticeBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: var(--spacing-sm);
+  font-size: 13px;
+  color: var(--color-forest);
+}
+
+.resultContainer {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+}
+
+.resultFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.valueBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.resultLabel {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.resultValue {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-ink);
+  letter-spacing: -0.5px;
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+}
+
+.metaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: right;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.metaIcon {
+  color: var(--color-forest);
+}
+
+.metaLabel {
+  font-weight: 500;
+}
+
+.metaValue {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.rateErrorMessage {
+  color: var(--color-error);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 0;
+}
+
+@media (max-width: 860px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .swapWrapper {
+    justify-content: center;
+    padding: var(--spacing-xs) 0;
+  }
+
+  .swapButton:hover {
+    transform: rotate(90deg);
+  }
+
+  .resultFlex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .metaBlock {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .metaItem {
+    justify-content: flex-start;
+  }
+}

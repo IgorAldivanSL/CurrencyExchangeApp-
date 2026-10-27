@@ -1,0 +1,167 @@
+.chartCard {
+  background-color: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-ink);
+  letter-spacing: -0.3px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.periodGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+}
+
+.periodBtn {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.periodBtn:hover {
+  color: var(--color-ink);
+}
+
+.periodActive {
+  background-color: var(--color-forest);
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.statCard {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.statLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.statValue {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.positiveChange {
+  color: var(--color-success);
+}
+
+.negativeChange {
+  color: var(--color-error);
+}
+
+.chartWrapper {
+  width: 100%;
+  min-height: 320px;
+  position: relative;
+  border-radius: var(--radius-md);
+}
+
+.stateCenter {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.noData {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.tooltip {
+  background-color: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  box-shadow: 0 4px 12px rgba(23, 42, 36, 0.08);
+}
+
+.tooltipDate {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.tooltipRate {
+  font-size: 14px;
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tooltipDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-forest);
+}
+
+@media (max-width: 860px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .periodGroup {
+    width: 100%;
+    overflow-x: auto;
+  }
+}
