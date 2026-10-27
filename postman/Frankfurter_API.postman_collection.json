@@ -1,0 +1,257 @@
+{
+  "info": {
+    "_postman_id": "b18f0e5b-381f-4a34-b223-289569ce4590",
+    "name": "Frankfurter API v2 — Currency Exchange App",
+    "description": "Coleção de testes de endpoints da API pública Frankfurter v2 para cotações de câmbio, conversão monetária e séries históricas.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.frankfurter.dev/v2",
+      "type": "string"
+    },
+    {
+      "key": "base",
+      "value": "USD",
+      "type": "string"
+    },
+    {
+      "key": "quote",
+      "value": "BRL",
+      "type": "string"
+    },
+    {
+      "key": "from",
+      "value": "2026-10-01",
+      "type": "string"
+    },
+    {
+      "key": "to",
+      "value": "2026-10-27",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Listar Moedas Disponíveis",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v2/currencies",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v2",
+            "currencies"
+          ]
+        },
+        "description": "Retorna o rol completo de moedas ativas e suportadas com código ISO, número ISO, nome e símbolo."
+      },
+      "response": []
+    },
+    {
+      "name": "2. Cotação Pontual Atual (Par de Moedas)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v2/rate/{{base}}/{{quote}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v2",
+            "rate",
+            "{{base}}",
+            "{{quote}}"
+          ]
+        },
+        "description": "Consulta a taxa oficial mais recente entre a moeda de base e a moeda de cotação."
+      },
+      "response": []
+    },
+    {
+      "name": "3. Cotações Mais Recentes (Parâmetros de Consulta)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v2/rates?base={{base}}&quotes={{quote}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v2",
+            "rates"
+          ],
+          "query": [
+            {
+              "key": "base",
+              "value": "{{base}}"
+            },
+            {
+              "key": "quotes",
+              "value": "{{quote}}"
+            }
+          ]
+        },
+        "description": "Consulta cotações usando query params base e quotes."
+      },
+      "response": []
+    },
+    {
+      "name": "4. Série Histórica por Intervalo (From e To)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v2/rates?base={{base}}&quotes={{quote}}&from={{from}}&to={{to}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v2",
+            "rates"
+          ],
+          "query": [
+            {
+              "key": "base",
+              "value": "{{base}}"
+            },
+            {
+              "key": "quotes",
+              "value": "{{quote}}"
+            },
+            {
+              "key": "from",
+              "value": "{{from}}"
+            },
+            {
+              "key": "to",
+              "value": "{{to}}"
+            }
+          ]
+        },
+        "description": "Retorna os registros diários de taxas no intervalo determinado."
+      },
+      "response": []
+    },
+    {
+      "name": "5. Série Histórica com Agrupamento Mensal",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v2/rates?base=EUR&quotes=USD&from=2021-01-01&group=month",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v2",
+            "rates"
+          ],
+          "query": [
+            {
+              "key": "base",
+              "value": "EUR"
+            },
+            {
+              "key": "quotes",
+              "value": "USD"
+            },
+            {
+              "key": "from",
+              "value": "2021-01-01"
+            },
+            {
+              "key": "group",
+              "value": "month"
+            }
+          ]
+        },
+        "description": "Demonstra o uso de agregação por mês para séries longas (5 e 10 anos)."
+      },
+      "response": []
+    },
+    {
+      "name": "6. Cenário de Erro — Moeda Inválida (422)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v2/rate/INVALID/USD",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v2",
+            "rate",
+            "INVALID",
+            "USD"
+          ]
+        },
+        "description": "Testa o comportamento de erro da API quando uma moeda não existe."
+      },
+      "response": []
+    },
+    {
+      "name": "7. Cenário Limite — Moedas Idênticas (USD para USD)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v2/rate/USD/USD",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v2",
+            "rate",
+            "USD",
+            "USD"
+          ]
+        },
+        "description": "Valida se a API responde taxa 1.0 para conversão entre a mesma moeda."
+      },
+      "response": []
+    }
+  ]
+}
